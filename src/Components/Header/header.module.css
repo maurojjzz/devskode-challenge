@@ -1,0 +1,19 @@
+.headerContainer{
+    background-color: #B187F533;
+    font-size: 20px;
+    height: 70px;
+    font-weight: 700;
+}
+.headerTitle h1{
+    font-size: 20px;
+    font-weight: 800;
+    margin-bottom: 0;
+}
+.headerIcon{
+    width: 20px;
+    height: 18px;
+}
+.boxIcon{
+    cursor: pointer;
+}
+
