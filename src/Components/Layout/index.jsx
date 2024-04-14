@@ -1,4 +1,3 @@
-import React from "react";
 import styles from "./layout.module.css";
 import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
 import Header from "../Header";

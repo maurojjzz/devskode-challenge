@@ -3,4 +3,5 @@
     background-color: #000000;
     color: #FFFFFF;
     font-weight: 400;
+    flex-shrink: 0;
 }

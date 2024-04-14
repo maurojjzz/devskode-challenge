@@ -3,6 +3,7 @@
     font-size: 20px;
     height: 70px;
     font-weight: 700;
+    flex-shrink: 0;
 }
 .headerTitle h1{
     font-size: 20px;

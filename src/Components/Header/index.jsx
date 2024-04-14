@@ -1,4 +1,3 @@
-import React from "react";
 import styles from "./header.module.css";
 import { useHistory } from "react-router-dom";
 
