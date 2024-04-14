@@ -1,6 +1,10 @@
 import styles from "./food-card.module.css";
+import StarRating from "./StarRating";
 
 const FoodCard = ({ data }) => {
+
+
+
   return (
     <div className={`rounded-4 d-flex flex-column align-items-center ${styles.foodCardContainer}`}>
       <div className={`border-bottom border-2 d-flex justify-content-center align-items-center ${styles.picContainer}`}>
@@ -27,7 +31,10 @@ const FoodCard = ({ data }) => {
             )}
           </div>
         </div>
-        <div className={`d-flex justify-content-center align-items-center ${styles.starBox} `}>***** {data.rating}</div>
+        <div className={`d-flex justify-content-center align-items-center mt-2 ${styles.starBox} `}>
+          <StarRating rating={data.rating}/>
+        </div>
+        
       </div>
     </div>
   );
