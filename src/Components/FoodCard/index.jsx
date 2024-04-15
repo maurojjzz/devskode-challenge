@@ -1,19 +1,41 @@
+import { useState } from "react";
 import styles from "./food-card.module.css";
 import StarRating from "./StarRating";
 
 const FoodCard = ({ data }) => {
-
-
+  const [isHovered, setIsHovered] = useState(false);
 
   return (
-    <div className={`rounded-4 d-flex flex-column align-items-center ${styles.foodCardContainer}`}>
+    <div
+      className={`rounded-4 d-flex flex-column align-items-center ${styles.foodCardContainer}`}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
       <div className={`border-bottom border-2 d-flex justify-content-center align-items-center ${styles.picContainer}`}>
         <div className={`${styles.pic}`}>
           <img src={data.image} className={`${styles.pic}`} alt={`food image from ${data.name}`} />
         </div>
       </div>
       <div className={`flex-grow-1 d-flex flex-column justify-content-center ${styles.infoContainer}`}>
-        <h1 className={styles.titleCard}>{data.name}</h1>
+        <div className={`d-flex align-items justify-content-between ${styles.titleCardContainer}`}>
+          <h1 className={styles.titleCard}>{data.name}</h1>
+          {isHovered && (
+            <div className={`d-flex align-items-center gap-2 ${styles.boxIconApi}`}>
+              <img
+                src="/assets/icons/edit.png"
+                alt="edit icon"
+                className={styles.pointer}
+                onClick={() => console.log("edit")}
+              />
+              <img
+                src="/assets/icons/trash.png"
+                alt="delete icon"
+                className={styles.pointer}
+                onClick={() => console.log("DELETE")}
+              />
+            </div>
+          )}
+        </div>
         <div>
           <h2>Descripcion</h2>
           <p className={styles.description}>{data.description}</p>
@@ -23,7 +45,11 @@ const FoodCard = ({ data }) => {
         </p>
         <div className={` d-flex flex-row align-items-center gap-1 ${styles.stockInfoBox}`}>
           <p className={`fw-bold ${styles.availability}`}>Availability:</p>
-          <div className={` d-flex align-items-center border rounded-4 ${styles.stock} ${data.stock ? styles.stockPositive : styles.stockNegative}`}>
+          <div
+            className={` d-flex align-items-center border rounded-4 ${styles.stock} ${
+              data.stock ? styles.stockPositive : styles.stockNegative
+            }`}
+          >
             {data.stock ? (
               <p className={`${styles.availability}`}>In Stock !</p>
             ) : (
@@ -32,9 +58,8 @@ const FoodCard = ({ data }) => {
           </div>
         </div>
         <div className={`d-flex justify-content-center align-items-center mt-2 ${styles.starBox} `}>
-          <StarRating rating={data.rating}/>
+          <StarRating rating={data.rating} />
         </div>
-        
       </div>
     </div>
   );
