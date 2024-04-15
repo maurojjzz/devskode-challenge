@@ -15,7 +15,7 @@ function Home() {
   }, []);
   
   return (
-    <div className={`d-flex flex-column align-items-center gap-5 ${styles.containerHome}`}>
+    <div className={`d-flex flex-column flex-md-row flex-lg-column justify-content-md-center flex-wrap align-items-center gap-5 ${styles.containerHome}`}>
       {data.map((item) => (
         <FoodCard key={item.id} data={item} />
       ))}

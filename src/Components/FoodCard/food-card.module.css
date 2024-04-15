@@ -7,6 +7,7 @@
 .picContainer {
   width: 316px;
   height: 227px;
+  border-bottom: 1px solid rgba(225, 225, 225, 1);
 }
 .pic {
   width: 275px;
@@ -54,4 +55,21 @@
 }
 .pointer {
   cursor: pointer;
+}
+
+@media screen and (min-width: 992px) {
+  .foodCardContainer {
+    width: 900px;
+    height: 254px;
+  }
+  .picContainer {
+    border-right: 1px solid rgba(225, 225, 225, 1);
+    height: 100%;
+    border-bottom: 0;
+  }
+}
+@media screen and (min-width: 1050px) {
+  .foodCardContainer {
+    width: 1000px;
+  }
 }
