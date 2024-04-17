@@ -1,0 +1,32 @@
+.selectContainer {
+  width: 250px;
+  height: 56px;
+  z-index: 1;
+  margin-bottom: 37px;
+}
+.selectBox {
+  border: 1px solid rgba(0, 0, 0, 0.23);
+}
+.selectLabel {
+  font-size: 12px;
+  top: -10px;
+  z-index: 1;
+  background-color: white;
+  margin-left: 12px;
+  padding: 0 4px;
+  margin-bottom: 0;
+}
+.selectBox:focus {
+  outline: rgb(33, 151, 242) solid 2px;
+  box-shadow: none;
+}
+.selectContainer:focus-within .selectLabel {
+  color: rgb(33, 151, 242);
+  font-weight: 500;
+}
+
+@media screen and (min-width: 769px) {
+  .selectContainer {
+    width: 425px;
+  }
+}
