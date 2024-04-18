@@ -1,0 +1,27 @@
+.inputContainer {
+  width: 250px;
+  height: 56px;
+  margin-bottom: 37px;
+}
+.inputBox {
+  border: 1px solid rgba(0, 0, 0, 0.23);
+  border-radius: 4px;
+  padding-left: 12px;
+}
+.inputBox:focus {
+  outline: rgb(33, 151, 242) solid 2px;
+}
+
+.error{
+  font-size: 11px;
+}
+
+.inputBoxError{
+  border: 2px solid red;
+}
+
+@media screen and (min-width: 769px) {
+  .inputContainer {
+    width: 425px;
+  }
+}

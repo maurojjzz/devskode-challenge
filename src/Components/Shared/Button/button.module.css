@@ -1,0 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+.buttonContainer{
+    width: 250px;
+    height: 56px;
+}
+.buttonBox{
+    border: 0;
+    font-family: 'Poppins', sans-serif;
+    background-color: rgba(185, 133, 252, 1);
+    color: rgba(255, 255, 255, 1);
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    transition: 0.5s all ease;
+}
+.buttonBox:hover{
+    background-color: rgb(167, 105, 247);
+}
