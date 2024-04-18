@@ -21,6 +21,10 @@ function Home() {
     setData(data.filter((item) => item.id !== id));
   };
 
+  const handleUpdateItem = (updatedData) => {
+    setData(data.map(item => item.id === updatedData.id ? updatedData : item));
+  };
+
   return (
     <div
       className={`d-flex flex-column flex-md-row flex-lg-column justify-content-md-center flex-wrap align-items-center gap-5 ${styles.containerHome}`}
@@ -32,9 +36,10 @@ function Home() {
           setShowForm={setShowForm}
           setFoodData={setFoodData}
           handleDeleteItem={handleDeleteItem}
+          
         />
       ))}
-      {showForm && <Form foodData={foodData} id={foodData.id} setShowForm={setShowForm} />}
+      {showForm && <Form foodData={foodData} id={foodData.id} setShowForm={setShowForm} handleUpdateItem={handleUpdateItem} />}
     </div>
   );
 }

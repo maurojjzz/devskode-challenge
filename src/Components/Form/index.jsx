@@ -4,8 +4,7 @@ import { useForm } from "react-hook-form";
 import foodSchema from "../../Components/Form/Validation/foodSchema.js";
 import { joiResolver } from "@hookform/resolvers/joi";
 
-const Form = ({ foodData, id, setShowForm }) => {
-
+const Form = ({ foodData, id, setShowForm, handleUpdateItem }) => {
   const foodDataUpdate = {
     name: foodData?.name || "",
     description: foodData?.description || "",
@@ -22,15 +21,35 @@ const Form = ({ foodData, id, setShowForm }) => {
   } = useForm({
     mode: "onBlur",
     resolver: joiResolver(foodSchema),
-    defaultValues: {...foodDataUpdate},
+    defaultValues: { ...foodDataUpdate },
   });
 
-
-  const onSubmit = (data) => {
-    console.log(data, "datilla");
-    // Aquí puedes realizar cualquier acción adicional que necesites, como enviar los datos a la API
+  const updateFood = async (data) => {
+    try {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/food/${id}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+      if (response.ok) {
+        console.log("successfully updated food");
+        handleUpdateItem({ ...data, id });
+        setShowForm(false);
+      } else {
+        console.log("cannot update food");
+      }
+    } catch (error) {
+      console.error("Error updating food", error);
+    }
   };
 
+  const onSubmit = (data) => {
+    if (id) {
+      updateFood(data);
+    } else [console.log("create food")];
+  };
 
   return (
     <div className={`d-flex justify-content-center align-items-center ${styles.formContainer}`}>
@@ -38,7 +57,12 @@ const Form = ({ foodData, id, setShowForm }) => {
         className={`d-flex flex-column justify-content-center align-items-center rounded-3 position-relative ${styles.formBox}`}
         onSubmit={handleSubmit(onSubmit)}
       >
-        <img className={`position-absolute ${styles.closeIcon}`} src="/assets/icons/close.png" alt="close icon" onClick={() => setShowForm(false)} />
+        <img
+          className={`position-absolute ${styles.closeIcon}`}
+          src="/assets/icons/close.png"
+          alt="close icon"
+          onClick={() => setShowForm(false)}
+        />
         <h1 className={`${styles.formTitle}`}>{id ? "Update" : "Create"} Product</h1>
         <div className={`d-flex flex-column flex-lg-row ${styles.inputsContainer}`}>
           <Input
