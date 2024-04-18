@@ -12,6 +12,14 @@
   outline: rgb(33, 151, 242) solid 2px;
 }
 
+.error{
+  font-size: 11px;
+}
+
+.inputBoxError{
+  border: 2px solid red;
+}
+
 @media screen and (min-width: 769px) {
   .inputContainer {
     width: 425px;

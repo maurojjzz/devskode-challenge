@@ -24,7 +24,9 @@
   color: rgb(33, 151, 242);
   font-weight: 500;
 }
-
+.error{
+  font-size: 11px;
+}
 @media screen and (min-width: 769px) {
   .selectContainer {
     width: 425px;
