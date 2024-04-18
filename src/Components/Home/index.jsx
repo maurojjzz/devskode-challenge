@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import FoodCard from "../FoodCard";
 import styles from "./home.module.css";
 import Form from "../Form";
+import AddBtn from "../Shared/AddBtn";
 
 function Home() {
   const [data, setData] = useState([]);
@@ -25,6 +26,10 @@ function Home() {
     setData(data.map(item => item.id === updatedData.id ? updatedData : item));
   };
 
+  const handleAddItem = (newData) => {
+    setData([...data, newData]);
+  }
+
   return (
     <div
       className={`d-flex flex-column flex-md-row flex-lg-column justify-content-md-center flex-wrap align-items-center gap-5 ${styles.containerHome}`}
@@ -39,7 +44,8 @@ function Home() {
           
         />
       ))}
-      {showForm && <Form foodData={foodData} id={foodData.id} setShowForm={setShowForm} handleUpdateItem={handleUpdateItem} />}
+      <AddBtn setShowForm={setShowForm} setFoodData={setFoodData} />
+      {showForm && <Form foodData={foodData} id={foodData.id} setShowForm={setShowForm} handleUpdateItem={handleUpdateItem} handleAddItem={handleAddItem} />}
     </div>
   );
 }

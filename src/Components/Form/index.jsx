@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import foodSchema from "../../Components/Form/Validation/foodSchema.js";
 import { joiResolver } from "@hookform/resolvers/joi";
 
-const Form = ({ foodData, id, setShowForm, handleUpdateItem }) => {
+const Form = ({ foodData, id, setShowForm, handleUpdateItem, handleAddItem }) => {
   const foodDataUpdate = {
     name: foodData?.name || "",
     description: foodData?.description || "",
@@ -45,10 +45,34 @@ const Form = ({ foodData, id, setShowForm, handleUpdateItem }) => {
     }
   };
 
+  const createFood = async (data) => {
+    try {
+      const response= await fetch(`${import.meta.env.VITE_API_URL}/food`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      })
+      if (response.ok) {
+        console.log("successfully created food");
+        const responseData = await response.json();
+        handleAddItem({ ...data, id: responseData.id });
+        setShowForm(false);
+      } else {
+        console.log("cannot create food");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   const onSubmit = (data) => {
     if (id) {
       updateFood(data);
-    } else [console.log("create food")];
+    } else {
+      createFood(data);
+    }
   };
 
   return (
