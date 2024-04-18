@@ -1,9 +1,12 @@
 import { useState, useEffect } from 'react';
 import FoodCard from '../FoodCard';
 import styles from './home.module.css';
+import Form from "../Form";
 
 function Home() {
   const [data, setData] = useState([]);
+  const [showForm, setShowForm] = useState(false);
+  const [foodData, setFoodData] = useState({});
 
   useEffect(() => {
     const fetchData = async () => {
@@ -17,8 +20,9 @@ function Home() {
   return (
     <div className={`d-flex flex-column flex-md-row flex-lg-column justify-content-md-center flex-wrap align-items-center gap-5 ${styles.containerHome}`}>
       {data.map((item) => (
-        <FoodCard key={item.id} data={item} />
+        <FoodCard key={item.id} data={item} setShowForm={setShowForm} setFoodData={setFoodData} />
       ))}
+      {showForm && <Form foodData={foodData} id={foodData.id} setShowForm={setShowForm} />}
     </div>
   )
 }

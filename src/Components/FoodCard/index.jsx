@@ -2,7 +2,7 @@ import { useState } from "react";
 import styles from "./food-card.module.css";
 import StarRating from "./StarRating";
 
-const FoodCard = ({ data }) => {
+const FoodCard = ({ data, setShowForm, setFoodData }) => {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
@@ -25,7 +25,10 @@ const FoodCard = ({ data }) => {
                 src="/assets/icons/edit.png"
                 alt="edit icon"
                 className={styles.pointer}
-                onClick={() => console.log("edit")}
+                onClick={() => {
+                  setShowForm(true);
+                  setFoodData(data);
+                }}
               />
               <img
                 src="/assets/icons/trash.png"

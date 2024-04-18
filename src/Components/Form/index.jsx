@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import foodSchema from "../../Components/Form/Validation/foodSchema.js";
 import { joiResolver } from "@hookform/resolvers/joi";
 
-const Form = ({ foodData, id }) => {
+const Form = ({ foodData, id, setShowForm }) => {
 
   const foodDataUpdate = {
     name: foodData?.name || "",
@@ -15,7 +15,6 @@ const Form = ({ foodData, id }) => {
     image: foodData?.image || "",
   };
 
-  console.log(!!foodData);
   const {
     register,
     handleSubmit,
@@ -39,7 +38,7 @@ const Form = ({ foodData, id }) => {
         className={`d-flex flex-column justify-content-center align-items-center rounded-3 position-relative ${styles.formBox}`}
         onSubmit={handleSubmit(onSubmit)}
       >
-        <img className={`position-absolute ${styles.closeIcon}`} src="/assets/icons/close.png" alt="close icon" />
+        <img className={`position-absolute ${styles.closeIcon}`} src="/assets/icons/close.png" alt="close icon" onClick={() => setShowForm(false)} />
         <h1 className={`${styles.formTitle}`}>{id ? "Update" : "Create"} Product</h1>
         <div className={`d-flex flex-column flex-lg-row ${styles.inputsContainer}`}>
           <Input

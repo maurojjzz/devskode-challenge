@@ -7,7 +7,7 @@ const foodSchema = Joi.object({
         'any.required': 'Field is required.',
         'string.empty': 'Cannot be empty.'
       }),
-    description: Joi.string().min(3).max(50).required().messages({
+    description: Joi.string().min(3).max(150).required().messages({
         'string.min': 'At least 3 characters long.',
         'string.max': 'Cannot exceed 50 characters.',
         'any.required': 'Field is required.'
