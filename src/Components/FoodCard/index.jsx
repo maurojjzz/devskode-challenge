@@ -2,8 +2,28 @@ import { useState } from "react";
 import styles from "./food-card.module.css";
 import StarRating from "./StarRating";
 
-const FoodCard = ({ data, setShowForm, setFoodData }) => {
+const FoodCard = ({ data, setShowForm, setFoodData, handleDeleteItem }) => {
   const [isHovered, setIsHovered] = useState(false);
+
+  const handleDelete = async (id) => {
+    try {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/food/${id}`, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      if(!response.ok) {
+        console.log("Error erasing food");
+      } else {
+        console.log("Successfully deleted food");
+        handleDeleteItem(id);
+      }
+    } catch (error) {
+      console.error(error);
+    }
+
+  };
 
   return (
     <div
@@ -34,7 +54,7 @@ const FoodCard = ({ data, setShowForm, setFoodData }) => {
                 src="/assets/icons/trash.png"
                 alt="delete icon"
                 className={styles.pointer}
-                onClick={() => console.log("DELETE")}
+                onClick={() => handleDelete(data.id)}
               />
             </div>
           )}
