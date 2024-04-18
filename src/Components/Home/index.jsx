@@ -26,12 +26,12 @@ function Home() {
   };
 
   const handleUpdateItem = (updatedData) => {
-    setData(data.map(item => item.id === updatedData.id ? updatedData : item));
+    setData(data.map((item) => (item.id === updatedData.id ? updatedData : item)));
   };
 
   const handleAddItem = (newData) => {
     setData([...data, newData]);
-  }
+  };
 
   return (
     <div
@@ -49,8 +49,16 @@ function Home() {
         />
       ))}
       <AddBtn setShowForm={setShowForm} setFoodData={setFoodData} />
-      {showForm && <Form foodData={foodData} id={foodData.id} setShowForm={setShowForm} handleUpdateItem={handleUpdateItem} handleAddItem={handleAddItem} />}
-      {showModal && <Modal setShowModal={setShowModal} idToDelete={idToDelete} handleDeleteItem={handleDeleteItem}/>}
+      {showForm && (
+        <Form
+          foodData={foodData}
+          id={foodData.id}
+          setShowForm={setShowForm}
+          handleUpdateItem={handleUpdateItem}
+          handleAddItem={handleAddItem}
+        />
+      )}
+      {showModal && <Modal setShowModal={setShowModal} idToDelete={idToDelete} handleDeleteItem={handleDeleteItem} />}
     </div>
   );
 }

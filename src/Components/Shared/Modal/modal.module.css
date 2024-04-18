@@ -24,10 +24,25 @@
   width: 191px;
   color: rgba(21, 44, 112, 1);
 }
-.imageDelete{
-    margin-top: 30px;
+.imageDelete {
+  margin-top: 30px;
 }
-.buttonsContainer{
-    margin-bottom: 30px;
-    gap: 16px;
+.buttonsContainer {
+  margin-bottom: 30px;
+  gap: 16px;
+}
+
+@media screen and (min-width: 992px) {
+  .modalBox {
+    width: 546px;
+    height: 390px;
+  }
+  .modalTitle {
+    font-size: 36px;
+    width: 412px;
+  }
+  .buttonsContainer {
+    margin-bottom: 38px;
+    gap: 22px;
+  }
 }

@@ -37,7 +37,7 @@ const Modal = ({ setShowModal, idToDelete, handleDeleteItem }) => {
           <img src="/assets/icons/delete.png" alt="delete image" />
         </div>
         <h1 className={` text-center ${styles.modalTitle}`}>Are you sure you want to delete this item?</h1>
-        <div className={`d-flex flex-column  ${styles.buttonsContainer}`}>
+        <div className={`d-flex flex-column flex-lg-row ${styles.buttonsContainer}`}>
           <ModalButtons type={"delete"} actionClick={() => handleDelete()}/>
           <ModalButtons type={"cancel"} actionClick={() => setShowModal(false)}/>
         </div>
