@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
-import FoodCard from "../FoodCard";
 import styles from "./home.module.css";
+import FoodCard from "../FoodCard";
 import Form from "../Form";
-import AddBtn from "../Shared/AddBtn";
-import Modal from "../Shared/Modal";
+import Filter from "../Filter";
+import { AddBtn, Modal } from "../Shared";
 
 function Home() {
   const [data, setData] = useState([]);
@@ -34,21 +34,26 @@ function Home() {
   };
 
   return (
-    <div
-      className={`d-flex flex-column flex-md-row flex-lg-column justify-content-md-center flex-wrap align-items-center gap-5 ${styles.containerHome}`}
-    >
-      {data.map((item) => (
-        <FoodCard
-          key={item.id}
-          data={item}
-          setShowForm={setShowForm}
-          setFoodData={setFoodData}
-          handleDeleteItem={handleDeleteItem}
-          setShowModal={setShowModal}
-          setIdToDelete={setIdToDelete}
-        />
-      ))}
-      <AddBtn setShowForm={setShowForm} setFoodData={setFoodData} />
+    <div className={`d-flex flex-column align-items-center  ${styles.containerHome}`}>
+      <Filter data={data} setShowForm={setShowForm} setFoodData={setFoodData} />
+      <div
+        className={`d-flex flex-wrap justify-content-center gap-5 flex-md-row flex-lg-column justify-content-md-center  align-items-center ${styles.cardsContainer}`}
+      >
+        {data.map((item) => (
+          <FoodCard
+            key={item.id}
+            data={item}
+            setShowForm={setShowForm}
+            setFoodData={setFoodData}
+            handleDeleteItem={handleDeleteItem}
+            setShowModal={setShowModal}
+            setIdToDelete={setIdToDelete}
+          />
+        ))}
+      </div>
+      <div className="d-lg-none">
+        <AddBtn setShowForm={setShowForm} setFoodData={setFoodData} />
+      </div>
       {showForm && (
         <Form
           foodData={foodData}
