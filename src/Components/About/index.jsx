@@ -1,12 +1,24 @@
-// import Form from "../Form";
-
+import styles from "./about.module.css";
 const About = () => {
   return (
-    <div>
-      Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolore consequatur, ut quibusdam rerum iste ipsa quam id architecto reprehenderit eveniet non quo nemo, voluptatum perspiciatis, cupiditate deserunt voluptatibus minus porro?
-
+    <div className={`d-flex flex-column align-items-center ${styles.aboutContainer}`}>
+      <h1>About Us</h1>
+      <div className={`d-flex flex-column align-items-center justify-content-start ${styles.aboutSubContainer}`}>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio itaque unde quis optio debitis ab, impedit ipsa
+          cupiditate tenetur voluptatum error cum dolores natus, exercitationem aspernatur fuga quibusdam aliquid hic.
+        </p>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio itaque unde quis optio debitis ab, impedit ipsa
+          cupiditate tenetur voluptatum error cum dolores natus, exercitationem aspernatur fuga quibusdam aliquid hic.
+        </p>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio itaque unde quis optio debitis ab, impedit ipsa
+          cupiditate tenetur voluptatum error cum dolores natus, exercitationem aspernatur fuga quibusdam aliquid hic.
+        </p>
+      </div>
     </div>
-  )
-}
+  );
+};
 
 export default About;

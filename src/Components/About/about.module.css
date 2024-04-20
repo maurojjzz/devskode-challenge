@@ -1,0 +1,45 @@
+.aboutContainer{
+    height: 100%;
+    background-color: rgba(243, 243, 243, 1); 
+}
+.aboutContainer h1{
+    font-size: 20px;
+    font-weight: 700;
+    margin: 32px 0;
+}
+.aboutSubContainer{
+    background-color: rgba(255, 255, 255, 1);
+    width: 340px;
+    height: 532px;
+    border-radius: 8px;
+    padding: 56px 27px;
+}
+
+.aboutSubContainer p{
+    font-size: 15px;
+    font-weight: 700;
+    text-align: center;
+}
+
+@media screen and (min-width: 992px) {
+    .aboutSubContainer {
+      width: 900px;
+      height: 560px;
+      padding: 64px;
+    }
+    .aboutSubContainer p{
+        margin-bottom: 30px;
+        text-align: start;
+    }
+    .aboutContainer h1{
+        font-size: 30px;
+        margin-top: 60px;
+    }
+    
+  }
+  @media screen and (min-width: 1150px) {
+    .aboutSubContainer {
+        width: 1126px;
+      }
+  }
+  
