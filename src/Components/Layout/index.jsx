@@ -10,11 +10,10 @@ function Layout() {
     <div className={`container-fluid d-flex flex-column ${styles.containerLayout}`}>
       <Router>
         <Header />
-        <div className="border border-primary flex-grow-1">
+        <div className="flex-grow-1">
           <Switch>
             <Route path="/home" exact component={Home} />
             <Route path="/about" exact component={About} />
-            {/* <Route path="/food/:id" component={Header} /> */}
             <Redirect from="/" to="/home" />
           </Switch>
         </div>

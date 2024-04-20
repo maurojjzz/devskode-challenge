@@ -9,7 +9,7 @@ const AddBtn = ({setShowForm, setFoodData}) => {
     
   return (
     <div
-      className={`position-fixed rounded-circle d-flex justify-content-center align-items-center ${styles.btnContainer}`}
+      className={` rounded-circle d-flex justify-content-center align-items-center ${styles.btnContainer}`}
       onClick={() => handleClick()}
     >
       +
