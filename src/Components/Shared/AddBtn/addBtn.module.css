@@ -1,0 +1,30 @@
+.btnContainer {
+  font-size: 40px;
+  font-weight: 500;
+  width: 60px;
+  height: 60px;
+  background-color: rgba(177, 135, 245, 1);
+  color: rgba(255, 255, 255, 1);
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  bottom: 5%;
+  right: 5%;
+  position: fixed;
+}
+.btnContainer:hover {
+  transform: scale(1.1);
+  background-color: rgb(151, 97, 238);
+}
+
+@media screen and (min-width: 992px) {
+  .btnContainer{
+    position: static;
+    width: 36px;
+    height: 36px;
+    font-size: 25px;
+    font-weight: 400;
+  }
+}
+
+
