@@ -78,7 +78,7 @@ const Form = ({ foodData, id, setShowForm, handleUpdateItem, handleAddItem }) =>
   return (
     <div className={`d-flex justify-content-center align-items-center ${styles.formContainer}`}>
       <form
-        className={`d-flex flex-column justify-content-center align-items-center rounded-3 position-relative ${styles.formBox}`}
+        className={`d-flex flex-column justify-content-center align-items-center rounded-3 position-absolute  ${styles.formBox}`}
         onSubmit={handleSubmit(onSubmit)}
       >
         <img
