@@ -6,12 +6,49 @@
   top: 0;
   left: 0;
   background-color: rgba(180, 179, 179, 0.8);
+  overflow: auto;
 }
 .formBox {
   width: 316px;
-  height: 766px;
+  height: 90vh;
+  max-height: 766px;
   background-color: rgba(255, 255, 255, 1);
+  overflow-y: scroll;
 }
+.formBox::-webkit-scrollbar {
+  display: none;
+}
+@media screen and (orientation: portrait) {
+  
+  @media (max-height: 750px) {
+    .formBox {
+        padding-top: 50px;
+
+    }
+  }
+  @media (max-height: 638px) {
+    .formBox {
+        padding-top: 150px;
+
+    }
+  }
+  @media (max-height: 550px) {
+    .formBox {
+        padding-top: 250px;
+
+    }
+  }
+  @media (max-height: 430px) {
+    .formBox {
+        padding-top: 350px;
+
+    }
+  }
+
+}
+
+
+
 .formTitle {
   font-family: "Poppins", sans-serif;
   font-weight: 600;

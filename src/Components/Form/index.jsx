@@ -1,3 +1,4 @@
+import { useState } from "react";
 import styles from "./form.module.css";
 import { Input, Select, Button } from "../Shared";
 import { useForm } from "react-hook-form";
@@ -5,6 +6,8 @@ import foodSchema from "../../Components/Form/Validation/foodSchema.js";
 import { joiResolver } from "@hookform/resolvers/joi";
 
 const Form = ({ foodData, id, setShowForm, handleUpdateItem, handleAddItem }) => {
+  const [isLoading, setIsLoading] = useState(false);
+
   const foodDataUpdate = {
     name: foodData?.name || "",
     description: foodData?.description || "",
@@ -25,6 +28,7 @@ const Form = ({ foodData, id, setShowForm, handleUpdateItem, handleAddItem }) =>
   });
 
   const updateFood = async (data) => {
+    setIsLoading(true);
     try {
       const response = await fetch(`${import.meta.env.VITE_API_URL}/food/${id}`, {
         method: "PUT",
@@ -42,10 +46,13 @@ const Form = ({ foodData, id, setShowForm, handleUpdateItem, handleAddItem }) =>
       }
     } catch (error) {
       console.error("Error updating food", error);
+    } finally {
+      setIsLoading(false);
     }
   };
 
   const createFood = async (data) => {
+    setIsLoading(true);
     try {
       const response= await fetch(`${import.meta.env.VITE_API_URL}/food`, {
         method: "POST",
@@ -64,6 +71,8 @@ const Form = ({ foodData, id, setShowForm, handleUpdateItem, handleAddItem }) =>
       }
     } catch (error) {
       console.log(error);
+    } finally {
+      setIsLoading(false);
     }
   }
 
@@ -78,7 +87,7 @@ const Form = ({ foodData, id, setShowForm, handleUpdateItem, handleAddItem }) =>
   return (
     <div className={`d-flex justify-content-center align-items-center ${styles.formContainer}`}>
       <form
-        className={`d-flex flex-column justify-content-center align-items-center rounded-3 position-relative ${styles.formBox}`}
+        className={`d-flex flex-column justify-content-center align-items-center rounded-3 position-absolute  ${styles.formBox}`}
         onSubmit={handleSubmit(onSubmit)}
       >
         <img
@@ -139,7 +148,7 @@ const Form = ({ foodData, id, setShowForm, handleUpdateItem, handleAddItem }) =>
           />
         </div>
         <div className={` ${styles.buttonBox}`}>
-          <Button />
+          <Button isLoading={isLoading} />
         </div>
       </form>
     </div>
