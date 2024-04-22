@@ -3,7 +3,7 @@ import styles from "./home.module.css";
 import FoodCard from "../FoodCard";
 import Form from "../Form";
 import Filter from "../Filter";
-import { AddBtn, Modal } from "../Shared";
+import { AddBtn, Modal, Spinner } from "../Shared";
 
 function Home() {
   const [data, setData] = useState([]);
@@ -15,12 +15,20 @@ function Home() {
   const [minPrice, setMinPrice] = useState("");
   const [maxPrice, setMaxPrice] = useState("");
   const [searchText, setSearchText] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await fetch(`${import.meta.env.VITE_API_URL}/food`);
-      const data = await response.json();
-      setData(data);
+      setIsLoading(true);
+      try {
+        const response = await fetch(`${import.meta.env.VITE_API_URL}/food`);
+        const data = await response.json();
+        setData(data);
+      } catch (error) {
+        console.error(error);
+      } finally {
+        setIsLoading(false);
+      }
     };
     fetchData();
   }, []);
@@ -99,17 +107,21 @@ function Home() {
       <div
         className={`d-flex flex-wrap justify-content-center gap-5 flex-md-row flex-lg-column justify-content-md-center  align-items-center ${styles.cardsContainer}`}
       >
-        {filteredData.map((item) => (
-          <FoodCard
-            key={item.id}
-            data={item}
-            setShowForm={setShowForm}
-            setFoodData={setFoodData}
-            handleDeleteItem={handleDeleteItem}
-            setShowModal={setShowModal}
-            setIdToDelete={setIdToDelete}
-          />
-        ))}
+        {isLoading ? (
+          <Spinner type={"dark"}/>
+        ) : (
+          filteredData.map((item) => (
+            <FoodCard
+              key={item.id}
+              data={item}
+              setShowForm={setShowForm}
+              setFoodData={setFoodData}
+              handleDeleteItem={handleDeleteItem}
+              setShowModal={setShowModal}
+              setIdToDelete={setIdToDelete}
+            />
+          ))
+        )}
       </div>
       <div className="d-lg-none">
         <AddBtn setShowForm={setShowForm} setFoodData={setFoodData} />

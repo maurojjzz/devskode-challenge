@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { useState} from "react";
 import styles from "./filter.module.css";
-import { AddBtn } from "../Shared";
+import { AddBtn, Spinner } from "../Shared";
 const Filter = ({
   setShowForm,
   setFoodData,
@@ -14,6 +14,8 @@ const Filter = ({
   searchText,
 }) => {
   const [showModal, setShowModal] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+
 
   return (
     <div className={` ${styles.topBox}`}>
@@ -76,9 +78,15 @@ const Filter = ({
             </div>
             <div
               className={` d-flex justify-content-center align-items-center ${styles.filterBtn}`}
-              onClick={() => setShowModal(false)}
+              onClick={() => {
+                setIsLoading(true);
+                setTimeout(() => {
+                  setShowModal(false);
+                  setIsLoading(false);
+                }, 2000);
+              }}
             >
-              Filter
+              {isLoading ? <Spinner /> : "Filter"}
             </div>
           </div>
         </div>
